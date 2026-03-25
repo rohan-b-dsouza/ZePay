@@ -7,6 +7,7 @@ import { authMiddleware } from "../middlewares/auth.js";
 import { userUpdateValidation } from "../middlewares/userUpdateValidation.js";
 import { updateUser } from "../controllers/updateUser.js";
 import { searchUsers } from "../controllers/searchUsers.js";
+import { me } from "../controllers/me.js";
 
 const userRouter = Router();
 
@@ -14,8 +15,10 @@ userRouter.post('/signup', userSignupValidation, signup);
 
 userRouter.post('/signin', userSigninValidation, signin);
 
-userRouter.put('/profile', authMiddleware, userUpdateValidation, updateUser);
+userRouter.put('/', authMiddleware, userUpdateValidation, updateUser);
 
 userRouter.get('/search', authMiddleware, searchUsers);
+
+userRouter.get('/me', authMiddleware, me);
 
 export default userRouter;
