@@ -1,4 +1,4 @@
-export default function Topbar({ user, initials }) {
+export default function Topbar({ firstName, initials }) {
   return (
     <div className="flex justify-between text-[#0B0F1A] bg-[#ffffff] p-3 items-center border-b border-[#E8E7E2] text-base">
       <div className="font-normal ml-4 flex justify-center items-center">
@@ -7,7 +7,7 @@ export default function Topbar({ user, initials }) {
       </div>
       <div className="font-normal flex items-center">
         <div className="font-medium">
-          <span className="text-[#8A8F9E] font-normal">Welcome,</span> {user}
+          <span className="text-[#8A8F9E] font-normal">Welcome,</span> {firstName}
         </div>
         <div className="rounded-full text-white bg-[#1A3CFF] w-10 h-10 flex justify-center items-center ml-2 mr-4">
           <div>{initials}</div>

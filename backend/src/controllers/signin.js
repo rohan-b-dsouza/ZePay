@@ -8,14 +8,18 @@ export const signin = async (req, res)=> {
         const existingUser = await User.findOne({email});
         if (!existingUser) {
             return res.status(400).json({
-                message: "Email doesn't exist"
+                errors: {
+                    email: "Email doesn't exist"
+                }
             });
         }
         const hashedPassword = existingUser.password;
         const isPasswordCorrect = await bcrypt.compare(password, hashedPassword);
         if (!isPasswordCorrect) {
             return res.status(401).json({
-                message: "Password entered is incorrect"
+                errors: {
+                    password: "Password entered is incorrect"
+                }
             });
         }
         const userId = existingUser._id;
